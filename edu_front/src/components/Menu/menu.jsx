@@ -1,4 +1,4 @@
-export default function MenuPage() {
+export default function Menu() {
     return(
         <ul>
             <li>Accueil</li>
