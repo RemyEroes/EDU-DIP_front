@@ -35,11 +35,6 @@ function useFetchWithAuth(endpoint, deps = []) {
     fetchData();
   }, [endpoint, ...deps]);
 
-  // log quand data change
-  useEffect(() => {
-    if (data !== null) console.log("Nouvelle data:", data);
-  }, [data]);
-
   return { data, loading, error };
 }
 
