@@ -1,21 +1,27 @@
-import {useEffect, useState} from 'react'
+import React from 'react'
 import './App.scss'
-import MenuPage from "./components/Menu/menu.jsx";
-import LoginForm from "./components/Login/login-form.jsx";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/home/home.jsx';
+import Login from './pages/login/login.jsx';
+import PrivateRoute from './components/PrivateRoute/private-route.jsx';
+import PublicRoute from './components/PublicRoute/public-route.jsx';
 
 function  App () {
+return (
+    <Router>
+      <Routes>
+        {/* Routes publiques */}
+        <Route element={<PublicRoute />}>
+            <Route path="/login" element={<Login />} /> 
+        </Route>
 
-    const data =  fetch("http://localhost:3030/ok")
-        .then(data => console.log(data))
-    const [isConnected, setIsConnected] = useState(false)
-    return (
-        <>
-            <h1>Bienvenue sur EDU DIP</h1>
-            <h2>Votre portail éducatif</h2>
-
-            {isConnected ? <MenuPage/> : <LoginForm/>}
-        </>
-    )
+        {/* Routes protégées */}
+        <Route element={<PrivateRoute />}>
+          <Route path="/" element={<Home />} />
+        </Route>
+      </Routes>
+    </Router>
+  );
 }
 
 export default App
