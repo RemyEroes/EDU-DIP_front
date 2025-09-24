@@ -5,7 +5,8 @@ import Home from './pages/home/home.jsx';
 import Login from './pages/login/login.jsx';
 import PrivateRoute from './components/PrivateRoute/private-route.jsx';
 import PublicRoute from './components/PublicRoute/public-route.jsx';
-import User from './components/User/user.jsx';
+import Apitest from './pages/api-test/apitest.jsx';
+
 
 function  App () {
 return (
@@ -13,13 +14,13 @@ return (
       <Routes>
         {/* Routes publiques */}
         <Route element={<PublicRoute />}>
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<Login />} /> 
         </Route>
 
         {/* Routes protégées */}
         <Route element={<PrivateRoute />}>
           <Route path="/" element={<Home />} />
-          <Route path="/user/:nom/:prenom/:classe" element={<User />} />
+          <Route path='/apitest' element={<Apitest/>}/>
         </Route>
       </Routes>
     </Router>
