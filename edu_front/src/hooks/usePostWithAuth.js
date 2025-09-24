@@ -1,44 +1,3 @@
-// import { useState, useEffect } from "react";
-// import axios from "axios";
-
-// function usePostWithAuth(endpoint, data, deps = []) {
-//     const [loading, setLoading] = useState(false); // Initialisé à false pour éviter un état de chargement inutile
-//     const [error, setError] = useState(null);
-//     const [response, setResponse] = useState(null); // Ajout d'un état pour stocker la réponse
-
-//     useEffect(() => {
-//         const fetchData = async () => {
-//             setLoading(true);
-//             setError(null);
-//             setResponse(null);
-
-//             try {
-//                 const token = localStorage.getItem("token");
-//                 if (!token) {
-//                     throw new Error("Pas de token trouvé");
-//                 }
-
-//                 const url = import.meta.env.VITE_API_URL + '/' + endpoint;
-//                 const res = await axios.post(url, data, {
-//                     headers: { Authorization: `Bearer ${token}` },
-//                 });
-
-//                 setResponse(res.data); // Stocke la réponse dans l'état
-//             } catch (err) {
-//                 setError(err.response?.data?.message || err.message || "Erreur inconnue");
-//             } finally {
-//                 setLoading(false);
-//             }
-//         };
-
-//         fetchData();
-//     }, [endpoint, data, ...deps]); // Ajout de `data` dans les dépendances pour refléter les changements
-
-//     return { loading, error, response }; // Retourne également la réponse
-// }
-
-// export default usePostWithAuth;
-
 import { useState } from "react";
 import axios from "axios";
 
@@ -55,7 +14,7 @@ function usePostWithAuth(endpoint, method = "POST") {
             const url = import.meta.env.VITE_API_URL + "/" + endpoint;
 
             let res;
-            
+
             switch (method.toUpperCase()) {
                 case "POST":
                     res = await axios.post(url, data, {
