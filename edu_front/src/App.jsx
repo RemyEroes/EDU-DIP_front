@@ -7,6 +7,7 @@ import PrivateRoute from './components/PrivateRoute/private-route.jsx';
 import PublicRoute from './components/PublicRoute/public-route.jsx';
 import Apitest from './pages/api-test/apitest.jsx';
 import User from "./components/User/user.jsx";
+import Quizz from "./components/Quizz/quizz.jsx";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
                     <Route path="/" element={<Home/>}/>
                     <Route path='/apitest' element={<Apitest/>}/>
                     <Route path="/users/:id" element={<User/>}/>
+                    <Route path="/quizz-without-correction/:id" element={<Quizz/>}/>
                 </Route>
             </Routes>
         </Router>

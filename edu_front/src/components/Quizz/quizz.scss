@@ -1,0 +1,91 @@
+/* Styles for Quizz component */
+
+.quizz {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1rem; /* from previous inline style */
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  color: #222;
+}
+
+.quizz__title {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.quizz__subtitle {
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.quizz__questions {
+  margin: 0;
+  padding-left: 1.25rem; /* keep default ol counter but nicer spacing */
+}
+
+.quizz__question {
+  margin-bottom: 1rem; /* from previous inline style */
+}
+
+.quizz__question-text {
+  font-weight: 600; /* from previous inline style */
+  margin-bottom: 0.5rem; /* from previous inline style */
+}
+
+.quizz__answers {
+  list-style: none; /* from previous inline style */
+  padding: 0;       /* from previous inline style */
+  margin: 0;
+}
+
+.quizz__answer {
+  margin: 0.25rem 0; /* from previous inline style */
+}
+
+.quizz__label {
+  cursor: pointer; /* from previous inline style */
+}
+
+.quizz__radio {
+  margin-right: 0.5rem; /* from previous inline style */
+}
+
+.quizz__muted {
+  color: #64748b; /* from previous inline style */
+}
+
+.quizz__submit {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  background: #0ea5e9; /* sky-500 */
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.quizz__submit:hover {
+  background: #0284c7; /* sky-600 */
+}
+
+/* Responsive tweak */
+@media (max-width: 540px) {
+  .quizz {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .quizz__title {
+    font-size: 1.5rem;
+  }
+}
