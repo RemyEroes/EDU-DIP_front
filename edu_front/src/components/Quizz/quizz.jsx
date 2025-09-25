@@ -66,15 +66,23 @@ export default function Quizz() {
 
     };
 
-    const handleSubmit = async() => {
-        const user = JSON.parse(localStorage.getItem('user'));
-        const resultats = JSON.stringify(quizzAnswers);
-        const finalJson = {
-            user_id: user,
-            quizz_id: id,
-            resultats: resultats,
+    const handleSubmit = async () => {
+
+        const userId = localStorage.getItem('userId');
+
+        if (!userId) {
+            console.warn("Aucun identifiant utilisateur trouvé dans le localStorage (clé 'userId').");
+            return null;
         }
-        await axios.post(``, {finalJson});
+
+        const payload = {
+            user_id: userId,
+            quizz_id: id,
+            resultats: quizzAnswers, // renvoyé en JSON (objet), pas en chaîne JSON
+        };
+
+        return payload;
+        // await axios.post(`${import.meta.env.VITE_API_URL}/quizz/results`, payload);
     }
 
     if (loading) return <div>Chargement du quizz...</div>;
@@ -91,7 +99,7 @@ export default function Quizz() {
             ) : (
                 <ol className="quizz__questions">
                     {questions.map((q) => {
-                        const proposals = q.answers.filter((a) => (a.question_id===q.id));
+                        const proposals = q.answers.filter((a) => (a.question_id === q.id));
                         return (
                             <li key={q.id} className="quizz__question">
                                 <div className="quizz__question-text">{q.title}</div>
@@ -102,8 +110,10 @@ export default function Quizz() {
                                             return (
                                                 <li key={a.id} className="quizz__answer">
                                                     <label className="quizz__label">
-                                                        <input type="radio" name={name} value={String(a.id)} checked={quizzAnswers[q.id] === a.id} onChange={() => handleSelect(q.id, a.id)}
-                                                            className="quizz__radio"
+                                                        <input type="radio" name={name} value={String(a.id)}
+                                                               checked={quizzAnswers[q.id] === a.id}
+                                                               onChange={() => handleSelect(q.id, a.id)}
+                                                               className="quizz__radio"
                                                         />
                                                         {a.title}
                                                     </label>

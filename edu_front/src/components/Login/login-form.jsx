@@ -16,7 +16,7 @@ export default function LoginForm() {
             const res = await axios.post(`${import.meta.env.VITE_API_URL}/login`, {username, password});
             console.log(res.data);
             localStorage.setItem('token', res.data.token);
-            localStorage.setItem('user', res.data.user)
+            localStorage.setItem('userId', res.data.userId)
             navigate('/');
         } catch (err) {
             alert(err.response?.data?.message || 'Erreur connexion');
@@ -27,7 +27,6 @@ export default function LoginForm() {
         event.preventDefault();
         handleLogin();
     }
-
 
     return (
         <form onSubmit={handleSubmit}>
