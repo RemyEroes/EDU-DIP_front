@@ -92,51 +92,54 @@ export default function Quizz() {
     if (!quizz) return <div>Quizz introuvable</div>;
 
     return (
-        <div className="quizz">
-            <h1 className="quizz__title">Quizz</h1>
-            <h2 className="quizz__subtitle">{quizz.name}</h2>
+        <>
+            <div className="quizz">
+                <h1 className="quizz__title">Quizz</h1>
+                <h2 className="quizz__subtitle">{quizz.name}</h2>
 
-            {questions.length === 0 ? (
-                <p>Aucune question pour ce quizz.</p>
-            ) : (
-                <ol className="quizz__questions">
-                    {questions.map((q) => {
-                        const proposals = q.answers.filter((a) => (a.question_id === q.id));
-                        return (
-                            <li key={q.id} className="quizz__question">
-                                <div className="quizz__question-text">{q.title}</div>
-                                {proposals.length > 0 ? (
-                                    <ul className="quizz__answers">
-                                        {proposals.map((a) => {
-                                            const name = `q_${q.id}`;
-                                            return (
-                                                <li key={a.id} className="quizz__answer">
-                                                    <label className="quizz__label">
-                                                        <input type="radio" name={name} value={String(a.id)}
-                                                               checked={quizzAnswers[q.id] === a.id}
-                                                               onChange={() => handleSelect(q.id, a.id)}
-                                                               className="quizz__radio"
-                                                        />
-                                                        {a.title}
-                                                    </label>
-                                                </li>
-                                            );
-                                        })}
-                                    </ul>
-                                ) : (
-                                    <div className="quizz__muted">Aucune réponse proposée</div>
-                                )}
-                            </li>
-                        );
-                    })}
-                </ol>
-            )}
-
-            <button type="button" className="btn" onClick={handleSubmit}>
-                Valider
-            </button>
-        </div>
+                {questions.length === 0 ? (
+                    <p>Aucune question pour ce quizz.</p>
+                ) : (
+                    <>
+                        <ol className="quizz__questions">
+                            {questions.map((q) => {
+                                const proposals = q.answers.filter((a) => (a.question_id === q.id));
+                                return (
+                                    <li key={q.id} className="quizz__question">
+                                        <div className="quizz__question-text">{q.title}</div>
+                                        {proposals.length > 0 ? (
+                                            <ul className="quizz__answers">
+                                                {proposals.map((a) => {
+                                                    const name = `q_${q.id}`;
+                                                    return (
+                                                        <li key={a.id} className="quizz__answer">
+                                                            <label className="quizz__label">
+                                                                <input type="radio" name={name} value={String(a.id)}
+                                                                       checked={quizzAnswers[q.id] === a.id}
+                                                                       onChange={() => handleSelect(q.id, a.id)}
+                                                                       className="quizz__radio"
+                                                                />
+                                                                {a.title}
+                                                            </label>
+                                                        </li>
+                                                    );
+                                                })}
+                                            </ul>
+                                        ) : (
+                                            <div className="quizz__muted">Aucune réponse proposée</div>
+                                        )}
+                                    </li>
+                                );
+                            })}
+                        </ol>
+                        <button type="button" className="btn" onClick={handleSubmit}>
+                            Valider
+                        </button>
+                    </>
+                )}
+            </div>
+            <HomeButton/>
+        </>
     );
 }
-
 
