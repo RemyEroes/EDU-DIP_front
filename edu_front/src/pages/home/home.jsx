@@ -77,7 +77,7 @@ export default function Home() {
                     </>
                 ) : (
                     <>
-                        <Link to="/class/{user.id}" className="home__link">
+                        <Link to={`/users/${user.id}`} className="home__link">
                             Accéder à ma classe
                         </Link>
                     </>

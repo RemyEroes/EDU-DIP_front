@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 export default function HomeButton() {
     const navigate = useNavigate();
@@ -7,7 +7,9 @@ export default function HomeButton() {
         navigate('/');
     }
 
-    return(
-        <button type="button" onClick={handleBackToHome} className="btn">Accueil</button>
+    return (
+        <div>
+            <button type="button" onClick={handleBackToHome} className="btn">Accueil</button>
+        </div>
     )
 }
