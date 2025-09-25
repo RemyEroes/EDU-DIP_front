@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import './user.scss';
+import HomeButton from "../Home/home-button.jsx";
 
 export default function User() {
     const {id} = useParams();
@@ -59,43 +60,46 @@ export default function User() {
     const matieres = user.matieres || user.subjects || [];
 
     return (
-        <div className="user-profile">
-            <h2 className="user-profile__title">Profil</h2>
+        <>
+            <div className="user-profile">
+                <h2 className="user-profile__title">Profil</h2>
 
-            <p className="user-profile__field">
-                <strong>Nom:</strong> {user.last_name || '—'}
-            </p>
-            <p className="user-profile__field">
-                <strong>Prénom:</strong> {user.first_name || '—'}
-            </p>
+                <p className="user-profile__field">
+                    <strong>Nom:</strong> {user.last_name || '—'}
+                </p>
+                <p className="user-profile__field">
+                    <strong>Prénom:</strong> {user.first_name || '—'}
+                </p>
 
-            <div className="user-profile__section">
-                <strong>Classe(s):</strong>
-                {classes.length > 0 ? (
-                    <ul className='user-profile__list'>
-                        {classes.map((c) => (
-                            <li key={c.id}>
-                                {c.name} {c.level ? `(Niveau: ${c.level})` : ''}
-                            </li>
-                        ))}
-                    </ul>
-                ) : (
-                    <span> Aucune classe associée</span>
-                )}
+                <div className="user-profile__section">
+                    <strong>Classe(s):</strong>
+                    {classes.length > 0 ? (
+                        <ul className='user-profile__list'>
+                            {classes.map((c) => (
+                                <li key={c.id}>
+                                    {c.name} {c.level ? `(Niveau: ${c.level})` : ''}
+                                </li>
+                            ))}
+                        </ul>
+                    ) : (
+                        <span> Aucune classe associée</span>
+                    )}
+                </div>
+
+                <div className="user-profile__section">
+                    <strong>Matières:</strong>
+                    {Array.isArray(matieres) && matieres.length > 0 ? (
+                        <ul className='user-profile__list'>
+                            {matieres.map((m, idx) => (
+                                <li key={idx}>{typeof m === 'string' ? m : m?.name || JSON.stringify(m)}</li>
+                            ))}
+                        </ul>
+                    ) : (
+                        <span> Aucune matière renseignée</span>
+                    )}
+                </div>
             </div>
-
-            <div className="user-profile__section">
-                <strong>Matières:</strong>
-                {Array.isArray(matieres) && matieres.length > 0 ? (
-                    <ul className='user-profile__list'>
-                        {matieres.map((m, idx) => (
-                            <li key={idx}>{typeof m === 'string' ? m : m?.name || JSON.stringify(m)}</li>
-                        ))}
-                    </ul>
-                ) : (
-                    <span> Aucune matière renseignée</span>
-                )}
-            </div>
-        </div>
+            <HomeButton/>
+        </>
     );
 }
