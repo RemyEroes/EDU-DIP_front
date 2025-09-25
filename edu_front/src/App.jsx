@@ -8,6 +8,7 @@ import PublicRoute from './components/PublicRoute/public-route.jsx';
 import Apitest from './pages/api-test/apitest.jsx';
 import User from "./components/User/user.jsx";
 import Quizz from "./components/Quizz/quizz.jsx";
+import HomeButton from "./components/Home/home-button.jsx";
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
                     <Route path="/quizz-without-correction/:id" element={<Quizz/>}/>
                 </Route>
             </Routes>
+            <HomeButton />
         </Router>
     );
 }

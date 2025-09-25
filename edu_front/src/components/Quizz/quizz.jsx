@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import './quizz.scss';
 import axios from "axios";
+import HomeButton from "../Home/home-button.jsx";
 
 export default function Quizz() {
     const {id} = useParams();
@@ -78,10 +79,11 @@ export default function Quizz() {
         const payload = {
             user_id: userId,
             quizz_id: id,
-            resultats: quizzAnswers, // renvoyé en JSON (objet), pas en chaîne JSON
+            answers: quizzAnswers, // renvoyé en JSON (objet), pas en chaîne JSON
         };
-
+        console.log(payload);
         return payload;
+
         // await axios.post(`${import.meta.env.VITE_API_URL}/quizz/results`, payload);
     }
 
@@ -130,7 +132,7 @@ export default function Quizz() {
                 </ol>
             )}
 
-            <button type="button" className="quizz__submit" onClick={handleSubmit}>
+            <button type="button" className="btn" onClick={handleSubmit}>
                 Valider
             </button>
         </div>

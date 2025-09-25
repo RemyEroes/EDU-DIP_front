@@ -61,22 +61,7 @@
   color: #64748b; /* from previous inline style */
 }
 
-.quizz__submit {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  border: 1px solid #e2e8f0;
-  background: #0ea5e9; /* sky-500 */
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s ease, box-shadow 0.2s ease;
-}
 
-.quizz__submit:hover {
-  background: #0284c7; /* sky-600 */
-}
 
 /* Responsive tweak */
 @media (max-width: 540px) {
