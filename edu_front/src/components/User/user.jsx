@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useParams} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import './user.scss';
 import HomeButton from "../Home/home-button.jsx";
 
@@ -52,13 +52,13 @@ export default function User() {
     if (loading) return <div>Chargement...</div>;
     if (error) return <div>Erreur: {error}</div>;
     if (!user) return <div>Cet utilisateur n'existe pas</div>;
-
+console.log(user);
     const classes = Array.isArray(user.classes) ? user.classes : [];
 
     // "Matières" ne sont pas renvoyées par l'API actuelle.
     // On tente plusieurs clés possibles et on gère le cas d'absence.
-    const matieres = user.matieres || user.subjects || [];
-
+    const matieres = user.subjects;
+console.log(matieres);
     return (
         <>
             <div className="user-profile">
@@ -77,7 +77,8 @@ export default function User() {
                         <ul className='user-profile__list'>
                             {classes.map((c) => (
                                 <li key={c.id}>
-                                    {c.name} {c.level ? `(Niveau: ${c.level})` : ''}
+                                    {/*{c.name} {c.level ? `(Niveau: ${c.level})` : ''}*/}
+                                    <Link to={`/class/${c.id}`} > {c.name} {c.level ? `(Niveau: ${c.level})` : ''} </Link>
                                 </li>
                             ))}
                         </ul>

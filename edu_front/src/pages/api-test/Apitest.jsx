@@ -2,7 +2,7 @@ import useFetchWithAuth from "../../hooks/useFetchWithAuth";
 
 
 function Apitest() {
-    const {data} = useFetchWithAuth('classes');
+    const {data} = useFetchWithAuth('class/1');
 
     return (
         <div>{JSON.stringify(data, null, 2)}</div>
