@@ -1,7 +1,6 @@
 import React, {useEffect, useMemo, useState} from 'react';
 import {Link} from 'react-router-dom';
 import './home.scss';
-import HomeButton from "../../components/Home/home-button.jsx";
 
 export default function Home() {
     const [user, setUser] = useState(null);

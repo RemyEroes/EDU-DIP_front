@@ -10,6 +10,9 @@ import User from "./components/User/user.jsx";
 import Quizz from "./components/Quizz/quizz.jsx";
 import logo from './assets/images/logo.jpeg';
 import Error404 from "./components/Error404/index.jsx";
+import ClasseList from "./components/Classe/classe-list.jsx";
+import ClasseDetail from "./components/Classe/classe-detail.jsx";
+import ListQuizz from "./components/Quizz/list-quizz.jsx";
 
 
 function App() {
@@ -28,6 +31,9 @@ function App() {
                     <Route path='/apitest' element={<Apitest/>}/>
                     <Route path="/users/:id" element={<User/>}/>
                     <Route path="/quizz-without-correction/:id" element={<Quizz/>}/>
+                    <Route path="/classes" element={<ClasseList/>}/>
+                    <Route path="/class:id" element={<ClasseDetail/>}/>
+                    <Route path="/quizz" element={<ListQuizz/>}/>
                     <Route path="*" element={<Error404/>}/>
                 </Route>
             </Routes>
